@@ -1,4 +1,5 @@
 import { Car } from "./Models/Car.js"
+import { House } from "./Models/House.js"
 import { Value } from "./Models/Value.js"
 import { EventEmitter } from "./Utils/EventEmitter.js"
 import { isValidProp } from "./Utils/isValidProp.js"
@@ -15,6 +16,10 @@ class AppState extends EventEmitter {
   //   new Car({ make: 'Mazda', model: 'Miata', year: 2004, price: 6000, description: 'Baja fresh baby', color: '#bac4d0', img: 'https://bringatrailer.com/wp-content/uploads/2022/09/2004_mazda_mazdaspeed-mx-5-miata_2004_mazda_mazdaspeed-mx-5-miata_8300ef52-a541-4049-b310-288b5f8732ce-75ukgs-11738-93546.jpg?fit=940%2C627' }),
   // ]
 
+  houses = [
+    new House('1974', 'Mid-Century Modern Single Family Home', 3, 2.5, 1400, 375000, 'Newly renovated mid-century modern home', 'https://rew-feed-images.global.ssl.fastly.net/imls/_cloud_media/property/residentialincome/98862307-1-835976ecc96808a93ea194115ae6c537-m.jpg')
+  ]
+
   /** @type {import('./Models/Car').Car[]} */
   cars = loadState('cars', [Car])
 
@@ -22,6 +27,8 @@ class AppState extends EventEmitter {
   activeCar = null
 
   userName = ''
+
+  activeHouse = null
 
 }
 
@@ -37,3 +44,5 @@ export const appState = new Proxy(new AppState(), {
     return true
   }
 })
+
+
